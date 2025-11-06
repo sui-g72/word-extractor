@@ -1,0 +1,15 @@
+com\example\vocabapp\service\DictionaryService.class
+Definition.class
+com\example\vocabapp\VocabAppApplication.class
+com\example\vocabapp\dto\DictionaryResponse.class
+com\example\vocabapp\Result.class
+com\example\vocabapp\AppConfig.class
+com\example\vocabapp\AppConfig$JacksonMessagePackProvider.class
+com\example\vocabapp\controller\WordController.class
+com\example\vocabapp\AppConfig$JerseyConfig.class
+com\example\vocabapp\dto\DictionaryResponse$Phonetic.class
+com\example\vocabapp\service\PdfParserService.class
+com\example\vocabapp\service\WebPageParserService.class
+com\example\vocabapp\dto\DictionaryResponse$Definition.class
+com\example\vocabapp\dto\DictionaryResponse$Meaning.class
+com\example\vocabapp\service\DictionaryService$1.class

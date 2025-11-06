@@ -35,8 +35,7 @@
         <dependency>
         <groupId>org.thymeleaf</groupId>
         <artifactId>thymeleaf-spring6</artifactId> <!-- Spring Boot 3系なら thymeleaf-spring6 -->
-        <!-- 最新版に置き換える -->
-        </dependency>
+        </dependency><!--$NO-MVN-MAN-VER$--><!--$NO-MVN-MAN-VER$-->
 
         <!-- WebClient / WebFlux (API呼び出し用) -->
         <dependency>
