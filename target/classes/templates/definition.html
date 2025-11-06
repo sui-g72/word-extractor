@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="'Definition of ' + ${entry.word}"></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+      body { 
+          font-family: Arial, sans-serif; 
+          margin: 1em; 
+          background-color: #f9f9f9; 
+          color: #333; 
+          font-size: 1.1em; 
+          line-height: 1.6;
+      }
+      h2 { 
+          color: #2c3e50; 
+          font-size: 1.6em; 
+          margin-bottom: 0.5em;
+      }
+      .dict-button { 
+          display: inline-block; 
+          background-color: #2980b9; 
+          color: #fff; 
+          padding: 0.6em 1em; 
+          border-radius: 6px; 
+          text-decoration: none; 
+          font-size: 1em; 
+          margin: 0.3em 0.3em 0.3em 0; 
+      }
+      h3 { 
+          color: #34495e; 
+          margin-top: 1.5em; 
+          font-size: 1.4em;
+      }
+      h4 { 
+          color: #16a085; 
+          margin-top: 1em; 
+          font-size: 1.2em;
+      }
+      .error { color: red; font-weight: bold; }
+      .phonetics { margin: 0.5em 0; font-size: 1.1em; }
+      .phonetics audio { margin-left: 0.5em; vertical-align: middle; }
+      .definition { 
+          background: #fff; 
+          border: 1px solid #ddd; 
+          padding: 1em; 
+          margin-bottom: 1em; 
+          border-radius: 8px;
+          font-size: 1.1em;
+      }
+      .example { 
+          color: #7f8c8d; 
+          font-style: italic; 
+          margin: 0.5em 0; 
+      }
+      .synonyms { color: #2980b9; }
+      .translate-link { 
+          font-size: 0.9em; 
+          margin-left: 0.5em; 
+          text-decoration: none; 
+          color: #e74c3c; 
+      }
+
+      /* スマホ画面用 */
+      @media (max-width: 600px) {
+          body { font-size: 1.2em; }
+          .dict-button { 
+              display: block; 
+              width: 100%; 
+              text-align: center; 
+              margin: 0.4em 0; 
+          }
+          h2 { font-size: 1.8em; }
+      }
+  </style>
+</head>
+<body>
+  <h2 th:text="'Word: ' + ${entry.word}"></h2>
+  <!-- 辞書・検索ボタン -->
+  <div style="margin-top: 0.5em; margin-bottom: 0.5em;">
+      <a th:href="'https://www.dictionary.com/browse/' + ${entry.word}" target="_blank" class="dict-button">Dictionary.com</a>
+      <a th:href="'https://www.merriam-webster.com/dictionary/' + ${entry.word}" target="_blank" class="dict-button">Merriam-Webster</a>
+      <a th:href="'https://www.google.com/search?q=' + ${entry.word}" target="_blank" class="dict-button">Google Search</a>
+      <a th:href="'https://sentence.yourdictionary.com/' + ${entry.word}" target="_blank" class="dict-button">Example Sentences</a>
+  </div>
+  <!-- エラー表示 -->
+  <div th:if="${entry.error != null}" class="error">
+      <p th:text="${entry.error}"></p>
+  </div>
+  <!-- 発音 -->
+  <div th:if="${entry.phonetics != null}">
+      <h3>Pronunciation</h3>
+      <ul>
+          <li th:each="p : ${entry.phonetics}" class="phonetics">
+              <span th:text="${p.text}"></span>
+              <audio th:if="${p.audio != null}" controls>
+                  <source th:src="${p.audio}" type="audio/mpeg"/>
+              </audio>
+          </li>
+      </ul>
+  </div>
+  <!-- 意味一覧 -->
+  <div th:if="${entry.meanings != null}">
+      <h3>Meanings</h3>
+      <div th:each="m : ${entry.meanings}">
+          <h4 th:text="${m.partOfSpeech}"></h4>
+          <ol>
+              <li th:each="d : ${m.definitions}" class="definition">
+                  <p>
+                      <b>Definition:</b>
+                      <span th:text="${d.definition}"></span>
+                      <!-- DeepL リンク -->
+                      <a th:href="'https://www.deepl.com/ja/translator#en/ja/' + ${#strings.replace(d.definition, ' ', '%20')}"
+                         target="_blank" class="translate-link">🌐 和訳</a>
+                  </p>
+                  <p th:if="${d.example != null}" class="example">
+                      <b>Example:</b> <i th:text="${d.example}"></i>
+                  </p>
+                  <p th:if="${d.synonyms != null}" class="synonyms">
+                      <b>Synonyms:</b>
+                      <span th:text="${#strings.listJoin(d.synonyms, ', ')}"></span>
+                  </p>
+              </li>
+          </ol>
+      </div>
+  </div>
+</body>
+</html>
