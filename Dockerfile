@@ -1,29 +1,21 @@
-# JDK イメージ
 FROM eclipse-temurin:17-jdk
 
-# 作業ディレクトリ
 WORKDIR /app
 
-# Maven wrapper がある場合
+# Maven wrapper & POM
 COPY mvnw* pom.xml ./
 COPY .mvn ./.mvn
 
-# 依存関係ダウンロード
+# 依存関係だけ先にダウンロード
 RUN ./mvnw -q dependency:resolve
 
-# ソースコピーしてビルド
+# ソースをコピーしてビルド
 COPY src ./src
 RUN ./mvnw -q package -DskipTests
 
-# jar を起動
-CMD ["java", "-jar", "target/*.jar"]
+# jar ファイルを app.jar にリネームして統一
+RUN mv target/vocabapp-1.0.0.jar app.jar
 
-FROM eclipse-temurin:17-jdk
+EXPOSE 8080
 
-WORKDIR /app
-
-COPY . .
-
-RUN ./mvnw -q package -DskipTests || mvn -q package -DskipTests
-
-CMD ["java", "-jar", "target/*.jar"]
+CMD ["java", "-jar", "app.jar"]
