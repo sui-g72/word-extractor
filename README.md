@@ -2,7 +2,10 @@
 
 PDF または Web ページから英単語を自動抽出し、アルファベット順に分類して表示できる Web アプリです。
 
-## 🚀 主な機能
+## 🚀 デモ
+https://word-extractor.onrender.com
+
+## 🛸 主な機能
 - PDF からの英単語抽出
 - Web ページ URL からの英単語抽出
 - 単語を A-Z で分類表示
@@ -22,7 +25,7 @@ PDF または Web ページから英単語を自動抽出し、アルファベ�
 
 | Top | Word List | Definition |
 |---|---|---|
-| ![top](./top.png) | ![list](./list.png) | ![detail](./define.png) |
+| ![top](screenshots/top.png) | ![list](screenshots/list.png) | ![detail](screenshots/define.png) |
 
 
 ## 💡 使い方
