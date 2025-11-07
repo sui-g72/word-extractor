@@ -37,13 +37,9 @@ https://word-extractor.onrender.com
 
 ## 🗂 ディレクトリ構成
 src
-
 └ main
-
 ├ java (コントローラ / サービス)
-
 └ resources
-
 └ templates (Thymeleaf テンプレート)
 
 
