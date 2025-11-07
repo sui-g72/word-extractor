@@ -69,3 +69,24 @@ https://word-extractor.onrender.com
 git clone https://github.com/sui-g72/word-extractor.git
 cd word-extractor
 mvn spring-boot:run
+```
+
+---
+
+## 📈 今後の発展予定
+| 内容 | 目的 |
+|---|---|
+| 単語出現頻度ランキング | 学習の優先順位を可視化 |
+| 単語帳保存 / ユーザー認証 | 学習継続を支援 |
+| React 版 UI | フロント分離による保守性の向上 |
+---
+
+👤 開発者
+後藤己航（ゴトウナツ）
+GitHub: https://github.com/sui-g72
+
+---
+
+「学習の困りごと」を起点に、
+設計 → 実装 → 改善を繰り返したプロジェクトです。
+
