@@ -21,7 +21,7 @@ https://word-extractor.onrender.com
 | Parsing | Jsoup / PDFBox |
 | Build Tool | Maven |
 
-## 🗂️ Screenshots
+## 📸 Screenshots
 
 | Top | Word List | Definition |
 |---|---|---|
